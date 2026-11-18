@@ -78,6 +78,7 @@ window.DATA = [
 ["Carhartt WIP", "Detroit jacket", "Na každý den", "Clothing", 4690, "M", "For a joint gift.", 0, 1, "", "Carhartt WIP Detroit Jacket"],
 ["Carhartt WIP", "Newel jeans", "Na každý den", "Clothing", 2470, "", "Relaxed tapered fit. Check his jeans size first.", 0, 1, "", "Carhartt WIP Newel Pant jeans"],
 ["Oakley", "Holbrook sunglasses", "Na každý den", "Accessory", 4500, "", "For a joint gift.", 0, 0, "", "Oakley Holbrook"],
-["Salomon", "Bonatti Cross Wind windbreaker", "Na běh", "Clothing", 2250, "M", "Light windproof running jacket. Often on sale for around 1,500 CZK.", 0, 1, "", "Salomon Bonatti Cross Wind jacket men"],
-["On", "Weather Jacket (windbreaker)", "Na běh", "Clothing", 6000, "M", "Ultralight windproof running jacket. For a joint gift.", 0, 1, "", "On Weather Jacket men"]
+["Salomon", "Bonatti Cross Wind windbreaker", "Na běh", "Clothing", 2250, "M", "Light windproof running jacket. Plain black or a muted colour. Often on sale for around 1,500 CZK.", 0, 1, "", "Salomon Bonatti Cross Wind jacket men"],
+["On", "Weather Jacket (windbreaker)", "Na běh", "Clothing", 6000, "M", "Ultralight windproof running jacket. Plain black or a muted colour. For a joint gift.", 0, 1, "", "On Weather Jacket men"],
+["Kiprun", "Wind 500 windbreaker", "Na běh", "Clothing", 800, "M", "Simple windproof running jacket. Plain black or a muted colour.", 0, 1, "", "Kiprun Wind 500 men windproof running jacket"]
 ];
