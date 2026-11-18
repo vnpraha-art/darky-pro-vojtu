@@ -1,6 +1,13 @@
 # Dárky pro Vojtu
 
-Malý průvodce dárky: vyberete rozpočet a na co to má být, stránka ukáže pár tipů. Pod tím je Vojtův vkus v kostce a test vlastního nápadu.
+Průvodce dárky: rozpočet → na co → tipy, pod tím vkus v kostce a test vlastního nápadu.
 
-- Statická stránka, jeden soubor `index.html`.
-- Zdroj dat: Google Sheet „Knihovna dárků pro Vojtu“ (list Dárky). Data jsou zkopírovaná do `index.html` v poli `DATA`.
+## Soubory
+- `index.html` – obsah a struktura (texty se nemění)
+- `styles.css` – vzhled; třída `.fx` na `<html>` = animovaná verze
+- `app.js` – logika filtrů + všechny animace; nahoře objekt `FX` s vypínači
+- `data.js` – kopie listu „Dárky“ z Google Sheets „Knihovna dárků pro Vojtu“
+- `vendor/` – GSAP 3.13 (ScrollTrigger, Flip, Draggable, Inertia), Lenis 1.1, canvas-confetti 1.9
+
+## Ztlumení animací
+V `app.js` nastavte příslušný klíč v `FX` na `false`. Tlačítko „Klidná verze“ (a systémové „omezit pohyb“) vypne vše.
