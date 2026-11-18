@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dárky pro Vojtu</title>
+<title>Gifts for Vojta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,400..700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
@@ -11,17 +11,17 @@
 </head>
 <body>
 
-<!-- Dekorace a ovládání (vše aria-hidden kromě dvou přepínačů) -->
+<!-- Decoration and controls (all aria-hidden except the two toggles) -->
 <div class="ribbon" id="ribbon" aria-hidden="true"><div class="ribbon-fill" id="ribbonFill"></div>
   <svg class="ribbon-bow" id="ribbonBow" viewBox="0 0 60 40"><path class="f-coral s3" d="M30 20 C18 2 4 6 8 16 C11 24 22 22 30 20 Z"/><path class="f-coral s3" d="M30 20 C42 2 56 6 52 16 C49 24 38 22 30 20 Z"/><path class="f-coral s3" d="M27 21 L18 38 L24 35 L28 38 Z"/><path class="f-coral s3" d="M33 21 L42 38 L36 35 L32 38 Z"/><circle class="f-butter s3" cx="30" cy="20" r="5"/></svg>
 </div>
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor" id="cursor" aria-hidden="true"><div class="cursor-blob" id="cursorBlob"><span class="cursor-emoji" id="cursorEmoji"></span></div></div>
 <div class="controls">
-  <button class="ctl" id="soundBtn" type="button" aria-pressed="false"><span aria-hidden="true">🔇</span> Zvuk</button>
-  <button class="ctl" id="calmBtn" type="button" aria-pressed="false">Klidná verze</button>
+  <button class="ctl" id="soundBtn" type="button" aria-pressed="false"><span aria-hidden="true">🔇</span> Sound</button>
+  <button class="ctl" id="calmBtn" type="button" aria-pressed="false">Calm mode</button>
 </div>
-<div class="stamp" id="stamp" aria-hidden="true">Schváleno! 🎉</div>
+<div class="stamp" id="stamp" aria-hidden="true">Approved! 🎉</div>
 
 <div class="floaters" id="floaters" aria-hidden="true">
   <div class="fl" style="left:3%;top:520px" data-speed="0.35"><svg viewBox="0 0 100 100"><path class="f-butter s4" d="M50 6 L61 37 L94 38 L68 58 L77 90 L50 71 L23 90 L32 58 L6 38 L39 37 Z"/></svg></div>
@@ -39,81 +39,81 @@
 
   <section class="hero" id="hero">
     <div class="hero-blob" id="heroBlob" aria-hidden="true"></div>
-    <p class="hello">psst, tohle je pro vás</p>
-    <h1 id="title">Co dát Vojtovi?</h1>
+    <p class="hello">psst, this one’s for you</p>
+    <h1 id="title">What to get Vojta?</h1>
     <div class="letter" id="letter">
-      <p>Ahoj holky, abyste nemusely hádat, udělal jsem vám malého pomocníka. Vyberte, kolik chcete dát a na co to má být, a ukáže vám pár tipů. Ale klidně vymyslete něco vlastního. Dole je můj vkus v kostce a test, jestli by se mi to líbilo.<span class="sig"><svg viewBox="0 0 160 60" class="sig-svg"><text id="sigText" x="150" y="44" text-anchor="end">Vojta</text></svg></span></p>
+      <p>Hi girls, so you don’t have to guess, I made you a little helper. Pick how much you want to spend and what it’s for, and it’ll show you a few ideas. But feel free to come up with something of your own. Further down is my taste in a nutshell and a test to see if I’d like it.<span class="sig"><svg viewBox="0 0 160 60" class="sig-svg"><text id="sigText" x="150" y="44" text-anchor="end">Vojta</text></svg></span></p>
     </div>
-    <div class="stickers" id="stickers" aria-label="Moje velikosti">
-      <span class="sticker">trička a mikiny <b>M</b></span>
-      <span class="sticker">běžecké half tights <b>L</b></span>
-      <span class="sticker">boty <b>42,5</b></span>
-      <span class="sticker">výška <b>175 cm</b></span>
+    <div class="stickers" id="stickers" aria-label="My sizes">
+      <span class="sticker">tees and hoodies <b>M</b></span>
+      <span class="sticker">running half tights <b>L</b></span>
+      <span class="sticker">shoes <b>EU 42.5</b></span>
+      <span class="sticker">height <b>175 cm</b></span>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
 
   <section class="step" aria-labelledby="s1">
-    <div class="step-head"><span class="num" aria-hidden="true">1</span><h2 id="s1">Kolik chcete dát?</h2></div>
-    <p class="hint">každá zvlášť, nebo dohromady</p>
+    <div class="step-head"><span class="num" aria-hidden="true">1</span><h2 id="s1">How much do you want to spend?</h2></div>
+    <p class="hint">each on your own, or together</p>
     <div class="bubbles" id="tiers"></div>
   </section>
 
   <section class="step" aria-labelledby="s2">
-    <div class="step-head"><span class="num" aria-hidden="true">2</span><h2 id="s2">Na co to má být?</h2></div>
+    <div class="step-head"><span class="num" aria-hidden="true">2</span><h2 id="s2">What’s it for?</h2></div>
     <div class="bubbles" id="cats"></div>
   </section>
 
   <section class="step" aria-labelledby="s3">
-    <div class="step-head"><span class="num" aria-hidden="true">3</span><h2 id="s3">Tady je pár tipů</h2></div>
+    <div class="step-head"><span class="num" aria-hidden="true">3</span><h2 id="s3">Here are a few ideas</h2></div>
     <div class="results" id="results" aria-live="polite">
       <div class="gift-stage" id="giftStage">
         <svg class="giftbox" id="giftbox" viewBox="0 0 200 200" aria-hidden="true">
           <g id="gbBox"><rect class="f-coral s5" x="38" y="92" width="124" height="88" rx="10"/><rect class="f-butter s5" x="91" y="92" width="18" height="88"/></g>
           <g id="gbLid"><rect class="f-coral s5" x="28" y="66" width="144" height="30" rx="9"/><rect class="f-butter s5" x="91" y="66" width="18" height="30"/><path class="f-butter s5" d="M100 66 C80 28 50 38 62 58 C68 66 88 66 100 66 Z"/><path class="f-butter s5" d="M100 66 C120 28 150 38 138 58 C132 66 112 66 100 66 Z"/></g>
         </svg>
-        <p class="waiting" id="waiting">Nejdřív vyberte rozpočet a na co to má být.</p>
+        <p class="waiting" id="waiting">First pick a budget and what it’s for.</p>
       </div>
       <div class="results-body" id="resultsBody"></div>
     </div>
   </section>
 
   <section class="step" id="vlastni" aria-labelledby="s4">
-    <div class="step-head"><span class="num" aria-hidden="true">4</span><h2 id="s4">Nebo vymyslete něco svého</h2></div>
+    <div class="step-head"><span class="num" aria-hidden="true">4</span><h2 id="s4">Or come up with your own</h2></div>
     <div class="taste">
       <div class="panel">
-        <h3>Můj vkus v kostce</h3>
-        <div class="cloud" id="cloud" aria-label="Značky, které mám rád">
-          <span class="l">Ciele</span><span class="m">Another Cotton Lab</span><span class="l">UVU</span><span class="m">Carhartt WIP</span><span class="s">On</span><span class="m">Salomon</span><span class="s">Patagonia</span><span class="s">Nude Project</span><span class="m">Arket</span><span class="s">COS</span><span class="s">Arc'teryx (na hory)</span><span class="m">Kintsugi</span><span class="s">Oraculum</span><span class="s">Falke</span>
+        <h3>My taste in a nutshell</h3>
+        <div class="cloud" id="cloud" aria-label="Brands I like">
+          <span class="l">Ciele</span><span class="m">Another Cotton Lab</span><span class="l">UVU</span><span class="m">Carhartt WIP</span><span class="s">On</span><span class="m">Salomon</span><span class="s">Patagonia</span><span class="s">Nude Project</span><span class="m">Arket</span><span class="s">COS</span><span class="s">Arc'teryx (mountains only)</span><span class="m">Kintsugi</span><span class="s">Oraculum</span><span class="s">Falke</span>
         </div>
         <ul class="rules" id="rules">
-          <li data-icon="💎"><span class="dot" aria-hidden="true"></span><div><b>Kvalita víc než logo</b><span>Radši jedna pořádná věc než tři nahodilé. Malé logo je v pohodě, velké ne.</span></div></li>
-          <li data-icon="🎯"><span class="dot" aria-hidden="true"></span><div><b>Značky, co umí jednu věc</b><span>Běžecké značky na běh, outdoorové na hory. Nic obecného z velkého řetězce.</span></div></li>
-          <li data-icon="🎨"><span class="dot" aria-hidden="true"></span><div><b>Tlumené barvy</b><span>Černá, šedá, béžová, tlumené tóny. Minimalisticky, ale ne nudně.</span></div></li>
-          <li data-icon="🏃"><span class="dot" aria-hidden="true"></span><div><b>Běh je vždycky dobrý nápad</b><span>Běhám pravidelně, takže cokoliv na běh určitě využiju.</span></div></li>
-          <li data-icon="🌿"><span class="dot" aria-hidden="true"></span><div><b>Vůně radši česká a méně známá</b><span>Kintsugi, Oraculum a podobné. Žádné, co nosí každý druhý.</span></div></li>
+          <li data-icon="💎"><span class="dot" aria-hidden="true"></span><div><b>Quality over logos</b><span>One proper thing beats three random ones. A small logo is fine, a big one isn’t.</span></div></li>
+          <li data-icon="🎯"><span class="dot" aria-hidden="true"></span><div><b>Brands that do one thing well</b><span>Running brands for running, outdoor brands for the mountains. Nothing generic from a big chain.</span></div></li>
+          <li data-icon="🎨"><span class="dot" aria-hidden="true"></span><div><b>Muted colours</b><span>Black, grey, beige, muted tones. Minimal, but not boring.</span></div></li>
+          <li data-icon="🏃"><span class="dot" aria-hidden="true"></span><div><b>Running is always a good idea</b><span>I run regularly, so anything for running will definitely get used.</span></div></li>
+          <li data-icon="🌿"><span class="dot" aria-hidden="true"></span><div><b>Fragrance: Czech and lesser known</b><span>Kintsugi, Oraculum and the like. Nothing every other person wears.</span></div></li>
         </ul>
       </div>
       <div class="panel">
-        <h3>Projde váš nápad?</h3>
+        <h3>Will your idea pass?</h3>
         <div class="test" id="test"></div>
         <div class="meter" aria-hidden="true"><span class="bulb" id="bulb"></span><span class="tube"><i id="meter"></i></span></div>
-        <p class="verdict" id="verdict" aria-live="polite">Odklikejte, co platí.</p>
+        <p class="verdict" id="verdict" aria-live="polite">Tick whatever applies.</p>
       </div>
     </div>
   </section>
 
   <section class="nope" aria-labelledby="s5">
-    <h2 id="s5">Tohle prosím ne</h2>
+    <h2 id="s5">Please, not these</h2>
     <ul id="nopeList">
-      <li>Nike</li><li>Sauvage, 1 Million a spol.</li><li>Věci na posilování</li><li>Hračky a LEGO</li><li>Vstupenky na koncerty</li><li>Řemínky a obaly na telefon nebo hodinky</li><li>Arc'teryx do města</li><li>Velká loga</li>
+      <li>Nike</li><li>Sauvage, 1 Million and co.</li><li>Gym gear</li><li>Toys and LEGO</li><li>Concert tickets</li><li>Phone or watch straps and cases</li><li>Arc'teryx for the city</li><li>Big logos</li>
     </ul>
   </section>
 
   <footer>
-    <button class="heart" id="heart" type="button" aria-label="Srdíčko"><svg viewBox="0 0 100 90" aria-hidden="true"><path class="f-coral s5" d="M50 84 C20 62 6 46 6 28 C6 14 17 5 29 5 C39 5 46 11 50 19 C54 11 61 5 71 5 C83 5 94 14 94 28 C94 46 80 62 50 84 Z"/><path class="s3 nofill hl" d="M22 24 C24 17 29 14 34 14"/></svg></button>
-    <p>děkuju, máte to u mě</p>
+    <button class="heart" id="heart" type="button" aria-label="Heart"><svg viewBox="0 0 100 90" aria-hidden="true"><path class="f-coral s5" d="M50 84 C20 62 6 46 6 28 C6 14 17 5 29 5 C39 5 46 11 50 19 C54 11 61 5 71 5 C83 5 94 14 94 28 C94 46 80 62 50 84 Z"/><path class="s3 nofill hl" d="M22 24 C24 17 29 14 34 14"/></svg></button>
+    <p>thank you, I owe you one</p>
   </footer>
 </div>
 

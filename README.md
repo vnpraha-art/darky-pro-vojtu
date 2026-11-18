@@ -1,13 +1,13 @@
-# Dárky pro Vojtu
+# Gifts for Vojta
 
-Průvodce dárky: rozpočet → na co → tipy, pod tím vkus v kostce a test vlastního nápadu.
+A gift guide: budget → what it's for → ideas, then my taste in a nutshell and a test for your own idea.
 
-## Soubory
-- `index.html` – obsah a struktura (texty se nemění)
-- `styles.css` – vzhled; třída `.fx` na `<html>` = animovaná verze
-- `app.js` – logika filtrů + všechny animace; nahoře objekt `FX` s vypínači
-- `data.js` – kopie listu „Dárky“ z Google Sheets „Knihovna dárků pro Vojtu“
+## Files
+- `index.html` – content and structure
+- `styles.css` – look; the `.fx` class on `<html>` = animated version
+- `app.js` – filter logic + all animations; the `FX` object at the top has a switch per effect
+- `data.js` – English copy of the "Dárky" tab in the Google Sheet "Knihovna dárků pro Vojtu"
 - `vendor/` – GSAP 3.13 (ScrollTrigger, Flip, Draggable, Inertia), Lenis 1.1, canvas-confetti 1.9
 
-## Ztlumení animací
-V `app.js` nastavte příslušný klíč v `FX` na `false`. Tlačítko „Klidná verze“ (a systémové „omezit pohyb“) vypne vše.
+## Toning animations down
+Set the matching key in `FX` in `app.js` to `false`. The "Calm mode" button (and the system "reduce motion" setting) turns everything off.

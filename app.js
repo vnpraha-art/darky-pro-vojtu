@@ -1,50 +1,50 @@
-/* Dárky pro Vojtu — logika + animace.
+/* Gifts for Vojta — logic + animation.
    ─────────────────────────────────────────────────────────────
-   FX: každý efekt má vlastní vypínač. Nastavte false a efekt zmizí,
-   obsah a logika zůstanou stejné. Klidná verze (nebo systémové
-   „omezit pohyb“) vypne všechno najednou.
+   FX: every effect has its own switch. Set it to false and that effect
+   goes away; content and logic stay the same. Calm mode (or the system
+   "reduce motion" setting) turns everything off at once.
    ───────────────────────────────────────────────────────────── */
 const FX = {
-  intro:        true,  // úvodní dárek, který se otevře a odhalí stránku
-  lenis:        true,  // plynulé scrollování
-  grain:        true,  // zrnitá textura přes stránku
-  cursor:       true,  // vlastní kurzor s ocáskem a emoji (jen myš)
-  ribbon:       true,  // stuha nahoře = ukazatel posunu
-  floaters:     true,  // plovoucí tvary s parallaxou
-  heroBlob:     true,  // fialová kapka, která jde za myší
-  titleLetters: true,  // nadpis po písmenech + zmáčknutí při najetí
-  letterUnfold: true,  // dopis se rozloží
-  signature:    true,  // podpis „Vojta“ se napíše tahem
-  stickers:     true,  // velikosti spadnou jako samolepky a jdou přetahovat
-  marquee:      true,  // pás se značkami, zrychluje se scrollem
-  sectionReveal:true,  // odhalení sekcí stíráním + postupné prvky
-  numbers:      true,  // čísla kroků se roztočí
-  headingWidth: true,  // nadpisy sekcí se při scrollu roztahují
-  cardMagnet:   true,  // karty přitahuje kurzor
-  cardTilt:     true,  // 3D náklon + odlesk + posun stínu
-  selectBurst:  true,  // konfety, zmáčknutí a emoji při výběru
-  giftBox:      true,  // dárek v kroku 3 se otřese a vybuchne
-  dealCards:    true,  // tipy vyletí z dárku jako rozdávané karty
-  flip:         true,  // přeskládání tipů (FLIP)
-  tagFloat:     true,  // značky se pohupují
-  tagRepel:     true,  // značky utíkají před kurzorem
-  ruleFlip:     true,  // zásady: tečka se otočí na ikonu
-  checkFx:      true,  // odškrtnutí: tah fajfky + jiskry
-  meterFx:      true,  // teploměr se pružně plní
-  approved:     true,  // 5/5: konfetový kanón, razítko, otřes
-  sound:        true,  // zvuk při schválení (vypnutý, dokud ho nezapnete)
-  nopeFx:       true,  // „tohle ne“: přeškrtnutí, třes při najetí
-  heart:        true,  // tlukoucí srdce v patičce
-  easterEgg:    true,  // 5× klik na srdce = pršící dárky
-  jelly:        true,  // želé efekt na tlačítkách
-  idle:         true,  // drobný pohyb, aby nic nestálo úplně
-  gyro:         true,  // na mobilu náklon telefonu hýbe tvary a kartami
+  intro:        true,  // intro gift box that opens to reveal the page
+  lenis:        true,  // smooth scrolling
+  grain:        true,  // grain texture over the page
+  cursor:       true,  // custom cursor with trail and emoji (mouse only)
+  ribbon:       true,  // ribbon at the top = scroll progress
+  floaters:     true,  // floating shapes with parallax
+  heroBlob:     true,  // purple blob that follows the mouse
+  titleLetters: true,  // title letter by letter + squash on hover
+  letterUnfold: true,  // letter unfolds
+  signature:    true,  // "Vojta" signature drawn as a stroke
+  stickers:     true,  // sizes drop in like stickers and can be dragged
+  marquee:      true,  // brand strip, speeds up with scroll
+  sectionReveal:true,  // sections wipe in + staggered children
+  numbers:      true,  // step numbers spin in
+  headingWidth: true,  // section headings widen on scroll
+  cardMagnet:   true,  // cards pulled toward the cursor
+  cardTilt:     true,  // 3D tilt + glare + shifting shadow
+  selectBurst:  true,  // confetti, squash and emoji on select
+  giftBox:      true,  // step 3 gift box shakes and bursts
+  dealCards:    true,  // ideas fly out of the box like dealt cards
+  flip:         true,  // reshuffling ideas (FLIP)
+  tagFloat:     true,  // brand tags bob
+  tagRepel:     true,  // brand tags dodge the cursor
+  ruleFlip:     true,  // rules: dot flips to an icon
+  checkFx:      true,  // tick: checkmark draw + sparks
+  meterFx:      true,  // thermometer fills with a spring
+  approved:     true,  // 5/5: confetti cannon, stamp, shake
+  sound:        true,  // sound on approval (off until switched on)
+  nopeFx:       true,  // "not these": strikethrough, shake on hover
+  heart:        true,  // beating heart in the footer
+  easterEgg:    true,  // 5 clicks on the heart = raining gifts
+  jelly:        true,  // jelly effect on buttons
+  idle:         true,  // small idle motion so nothing is fully still
+  gyro:         true,  // on phones, tilting moves shapes and cards
 };
 
 (() => {
   "use strict";
 
-  /* ---------- režim ---------- */
+  /* ---------- mode ---------- */
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let calmPref = null;
   try { calmPref = localStorage.getItem("vojta-calm"); } catch (e) {}
@@ -66,23 +66,23 @@ const FX = {
   const COLORS = ["#B9A1F2", "#FFE08A", "#FF5E5B", "#4B3A86", "#EBE2FF"];
   const center = el => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, r }; };
 
-  /* ---------- data a logika (beze změny) ---------- */
+  /* ---------- data and logic (unchanged) ---------- */
   const ITEMS = window.DATA.map((r, i) => ({ id: i, brand: r[0], name: r[1], cat: r[2], type: r[3], price: r[4], size: r[5], note: r[6], fav: !!r[7], verified: !!r[8], link: r[9], q: r[10] }));
   const TIERS = [
-    { id: "t1", big: "Do 500 Kč", small: "Malá radost, třeba ponožky", test: p => p < 500, emoji: "🪙" },
-    { id: "t2", big: "500–1 000 Kč", small: "Čepice, kšiltovka, doplňky", test: p => p >= 500 && p < 1000, emoji: "💸" },
-    { id: "t3", big: "1 000–2 000 Kč", small: "Něco pořádného, klidně napůl", test: p => p >= 1000 && p <= 2000, emoji: "💸" },
-    { id: "t4", big: "Skládáme se", small: "2 000 Kč a víc, dohromady", test: p => p > 2000, emoji: "🤝" }
+    { id: "t1", big: "Under 500 CZK", small: "A small treat, like socks", test: p => p < 500, emoji: "🪙" },
+    { id: "t2", big: "500–1,000 CZK", small: "Beanie, cap, accessories", test: p => p >= 500 && p < 1000, emoji: "💸" },
+    { id: "t3", big: "1,000–2,000 CZK", small: "Something proper, maybe split", test: p => p >= 1000 && p <= 2000, emoji: "💸" },
+    { id: "t4", big: "Chipping in", small: "2,000 CZK and up, together", test: p => p > 2000, emoji: "🤝" }
   ];
   const CATS = [
-    { id: "Na běh", big: "Na běh", small: "Oblečení a doplňky na běhání", emoji: "🏃" },
-    { id: "Na každý den", big: "Na každý den", small: "Trička, čepice, drobnosti", emoji: "👕" },
-    { id: "Na hory a výlety", big: "Na hory", small: "Výlety a snowboard", emoji: "🏔️" },
-    { id: "Vůně", big: "Vůně", small: "České parfumerie", emoji: "🧴" },
-    { id: "all", big: "Překvapte mě", small: "Ze všeho trochu", emoji: "🎲" }
+    { id: "Na běh", big: "For running", small: "Running clothes and accessories", emoji: "🏃" },
+    { id: "Na každý den", big: "For every day", small: "Tees, beanies, little things", emoji: "👕" },
+    { id: "Na hory a výlety", big: "For the mountains", small: "Hikes and snowboarding", emoji: "🏔️" },
+    { id: "Vůně", big: "Fragrance", small: "Czech perfume houses", emoji: "🧴" },
+    { id: "all", big: "Surprise me", small: "A bit of everything", emoji: "🎲" }
   ];
   const state = { tier: null, cat: null, open: false, seed: 0 };
-  const fmt = n => n.toLocaleString("cs-CZ").replace(/ /g, " ");
+  const fmt = n => n.toLocaleString("en-US");
   function shuffle(arr, seed) {
     const a = arr.slice(); let s = seed * 9301 + 49297;
     for (let i = a.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor(s / 233280 * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
@@ -90,19 +90,19 @@ const FX = {
   }
   function cardHTML(it) {
     const url = it.link || ("https://www.google.com/search?q=" + encodeURIComponent(it.q));
-    const tags = [it.type, it.size ? "vel. " + it.size : "", it.price >= 1000 ? "hodí se napůl" : ""].filter(Boolean).map(x => `<span class="tag">${x}</span>`).join("");
-    const note = it.fav ? (it.note ? it.note + " " : "") + "Tohle chci nejvíc!" : it.note;
+    const tags = [it.type, it.size ? "size " + it.size : "", it.price >= 1000 ? "good to split" : ""].filter(Boolean).map(x => `<span class="tag">${x}</span>`).join("");
+    const note = it.fav ? (it.note ? it.note + " " : "") + "This is the one I want most!" : it.note;
     return `<article class="card${it.fav ? " fav" : ""}" data-flip-id="c${it.id}" data-cursor="🎁">
     <div class="brand">${it.brand}</div>
     <h3>${it.name}</h3>
     <div>${note ? `<p class="note">${note}</p>` : ""}</div>
     <div><div class="tags">${tags}</div>
-    <div class="row"><div class="price">cca ${fmt(it.price)} Kč<small>${it.verified ? "cena ověřená" : "orientační cena"}</small></div>
-    <a class="go" href="${url}" target="_blank" rel="noopener" data-cursor="🛍️">${it.link ? "Do obchodu ↗" : "Najít ↗"}</a></div></div>
+    <div class="row"><div class="price">~${fmt(it.price)} CZK<small>${it.verified ? "price checked" : "approx. price"}</small></div>
+    <a class="go" href="${url}" target="_blank" rel="noopener" data-cursor="🛍️">${it.link ? "To the shop ↗" : "Find it ↗"}</a></div></div>
   </article>`;
   }
 
-  /* ---------- konfety a jiskry ---------- */
+  /* ---------- confetti and sparks ---------- */
   function burstAt(x, y, opts = {}) {
     if (!confettiFn) return;
     confettiFn(Object.assign({ particleCount: 46, spread: 75, startVelocity: 30, ticks: 140, scalar: .9, colors: COLORS, origin: { x: x / innerWidth, y: y / innerHeight }, disableForReducedMotion: false }, opts));
@@ -127,7 +127,7 @@ const FX = {
       .to(s, { y: c.r.top - 130, opacity: 0, scale: 1, duration: .45, ease: "power2.in" }, "+=.15");
   }
 
-  /* ---------- zvuk ---------- */
+  /* ---------- sound ---------- */
   let soundOn = false, actx = null;
   const soundBtn = $("#soundBtn");
   if (!FX.sound) soundBtn.hidden = true;
@@ -149,7 +149,7 @@ const FX = {
     });
   }
 
-  /* ---------- klidná verze ---------- */
+  /* ---------- calm mode ---------- */
   const calmBtn = $("#calmBtn");
   calmBtn.setAttribute("aria-pressed", CALM ? "true" : "false");
   calmBtn.addEventListener("click", () => {
@@ -157,7 +157,7 @@ const FX = {
     location.reload();
   });
 
-  /* ---------- plynulý scroll ---------- */
+  /* ---------- smooth scroll ---------- */
   let lenis = null;
   if (FX.lenis) {
     lenis = new Lenis({ lerp: .1, smoothWheel: true });
@@ -171,7 +171,7 @@ const FX = {
     if (lenis) { e.preventDefault(); lenis.scrollTo(target, { offset: -30, duration: 1.4 }); }
   });
 
-  /* ---------- kurzor ---------- */
+  /* ---------- cursor ---------- */
   if (FX.cursor) {
     document.documentElement.classList.add("has-cursor");
     const blob = $("#cursorBlob"), emo = $("#cursorEmoji");
@@ -198,7 +198,7 @@ const FX = {
     document.addEventListener("pointerdown", () => { const s = gsap.getProperty(blob, "scale"); gsap.fromTo(blob, { scale: s * .6 }, { scale: s, duration: .45, ease: "elastic.out(1,.4)" }); });
   }
 
-  /* ---------- stuha ---------- */
+  /* ---------- ribbon ---------- */
   if (FX.ribbon) {
     const fill = $("#ribbonFill"), bow = $("#ribbonBow");
     const setFill = gsap.quickSetter(fill, "scaleX"), setBow = gsap.quickSetter(bow, "x", "px");
@@ -208,7 +208,7 @@ const FX = {
     } });
   }
 
-  /* ---------- plovoucí tvary ---------- */
+  /* ---------- floating shapes ---------- */
   if (FX.floaters) {
     $$(".fl").forEach((fl, i) => {
       const sp = +fl.dataset.speed || .4;
@@ -275,7 +275,7 @@ const FX = {
     });
   }
 
-  /* ---------- úvodní dárek ---------- */
+  /* ---------- intro gift box ---------- */
   function intro(done) {
     const ov = document.createElement("div"); ov.className = "intro"; ov.setAttribute("aria-hidden", "true");
     ov.innerHTML = `<svg viewBox="0 0 200 200"><g id="inBox"><rect class="f-coral s5" x="38" y="92" width="124" height="88" rx="10"/><rect class="f-butter s5" x="91" y="92" width="18" height="88"/></g><g id="inLid"><rect class="f-coral s5" x="28" y="66" width="144" height="30" rx="9"/><rect class="f-butter s5" x="91" y="66" width="18" height="30"/><path class="f-butter s5" d="M100 66 C80 28 50 38 62 58 C68 66 88 66 100 66 Z"/><path class="f-butter s5" d="M100 66 C120 28 150 38 138 58 C132 66 112 66 100 66 Z"/></g></svg>`;
@@ -295,7 +295,7 @@ const FX = {
     gsap.set(ov, { clipPath: "circle(100% at 50% 50%)" });
   }
 
-  /* ---------- pás se značkami ---------- */
+  /* ---------- brand strip ---------- */
   const mq = $("#marquee");
   const BRANDS = ["Ciele", "Another Cotton Lab", "UVU", "Carhartt WIP", "On", "Salomon", "Patagonia", "Nude Project", "Arket", "COS", "Arc'teryx", "Kintsugi", "Oraculum", "Falke"];
   mq.innerHTML = [...BRANDS, ...BRANDS].map(b => `<span>${b}</span>`).join("");
@@ -306,7 +306,7 @@ const FX = {
     else ScrollTrigger.create({ start: 0, end: "max", onUpdate: s => boost(s.getVelocity() / 100) });
   }
 
-  /* ---------- odhalování sekcí ---------- */
+  /* ---------- section reveals ---------- */
   function reveals() {
     $$(".step, .nope").forEach(sec => {
       const head = $(".step-head, h2", sec);
@@ -325,7 +325,7 @@ const FX = {
     });
   }
 
-  /* ---------- náklon + magnet ---------- */
+  /* ---------- tilt + magnet ---------- */
   function tiltable(el, { magnet = .22, max = 12, shadow = true } = {}) {
     if (!(FX.cardTilt || FX.cardMagnet)) return;
     el.classList.add("fx-on");
@@ -347,7 +347,7 @@ const FX = {
     else if (FX.cardTilt) { el.addEventListener("pointerdown", apply); el.addEventListener("pointerup", () => gsap.delayedCall(.25, reset)); el.addEventListener("pointercancel", reset); }
   }
 
-  /* ---------- kroky 1 a 2 ---------- */
+  /* ---------- steps 1 and 2 ---------- */
   const tiersEl = $("#tiers"), catsEl = $("#cats");
   function makeBubble(o, onPick) {
     const b = document.createElement("button");
@@ -376,7 +376,7 @@ const FX = {
   TIERS.forEach(o => tiersEl.append(makeBubble(o, (b) => { state.tier = o.id; state.open = false; state.seed++; syncPressed(); pickFx(b, o); renderResults(); })));
   CATS.forEach(o => catsEl.append(makeBubble(o, (b) => { state.cat = o.id; state.open = false; state.seed++; syncPressed(); pickFx(b, o); renderResults(); })));
 
-  /* ---------- krok 3: tipy ---------- */
+  /* ---------- step 3: ideas ---------- */
   const stage = $("#giftStage"), waiting = $("#waiting"), body = $("#resultsBody"), giftbox = $("#giftbox");
   const pool = new Map();
   let revealed = false, busy = false, pending = false;
@@ -395,8 +395,8 @@ const FX = {
   const baseRot = i => (FX.flip || FX.dealCards) ? [-1, .8, 0][i % 3] : 0;
 
   function actionsHTML(n) {
-    return `<button class="btn primary" id="again" type="button" ${n <= 3 || state.open ? "hidden" : ""}>Ukaž jiné</button>
-      <button class="btn" id="all" type="button" ${n <= 3 ? "hidden" : ""}>${state.open ? "Zase jen tři" : "Ukaž všechny (" + n + ")"}</button>`;
+    return `<button class="btn primary" id="again" type="button" ${n <= 3 || state.open ? "hidden" : ""}>Show others</button>
+      <button class="btn" id="all" type="button" ${n <= 3 ? "hidden" : ""}>${state.open ? "Back to three" : "Show all (" + n + ")"}</button>`;
   }
   function ensureBody() {
     let cards = $(".cards", body);
@@ -455,7 +455,7 @@ const FX = {
     if (busy) { pending = true; return; }
     if (!state.tier || !state.cat) {
       stage.style.display = "";
-      waiting.textContent = !state.tier && !state.cat ? "Nejdřív vyberte rozpočet a na co to má být." : !state.tier ? "Ještě rozpočet nahoře." : "Ještě vyberte, na co to má být.";
+      waiting.textContent = !state.tier && !state.cat ? "First pick a budget and what it’s for." : !state.tier ? "Now just the budget up top." : "Now pick what it’s for.";
       if (FX.giftBox) gsap.fromTo(waiting, { y: 8, opacity: .3 }, { y: 0, opacity: 1, duration: .4, ease: "back.out(2)" });
       body.innerHTML = ""; return;
     }
@@ -463,7 +463,7 @@ const FX = {
     const pl = ITEMS.filter(i => tier.test(i.price) && (state.cat === "all" || i.cat === state.cat));
     if (!pl.length) {
       stage.style.display = "none";
-      body.innerHTML = `<div class="empty">Tady zatím nic nemám. Zkuste jiný rozpočet, nebo <a href="#vlastni">vymyslete něco svého</a>, stačí, když to projde testem.</div>`;
+      body.innerHTML = `<div class="empty">Nothing here yet. Try another budget, or <a href="#vlastni">come up with your own</a>. It just has to pass the test.</div>`;
       if (FX.flip) gsap.from($(".empty", body), { scale: .8, rotation: -3, opacity: 0, duration: .6, ease: "elastic.out(1,.5)" });
       return;
     }
@@ -488,7 +488,7 @@ const FX = {
     }
   }
 
-  /* ---------- krok 4: vkus ---------- */
+  /* ---------- step 4: taste ---------- */
   const cloud = $("#cloud");
   if (FX.tagFloat || FX.tagRepel) {
     $$(":scope > span", cloud).forEach(sp => {
@@ -528,15 +528,15 @@ const FX = {
   }
   if (HAS_GSAP && (FX.tagFloat || FX.tagRepel || FX.ruleFlip)) ScrollTrigger.create({ trigger: "#vlastni", start: "top 95%", once: true, onEnter: initTaste });
 
-  /* ---------- test vlastního nápadu ---------- */
+  /* ---------- own-idea test ---------- */
   const TEST = [
-    "Je to od značky, která dělá hlavně jednu věc (běh, outdoor, oblečení)?",
-    "Nosil by to Vojta skoro každý den nebo na běh?",
-    "Logo je malé, nebo žádné?",
-    "Barva je tlumená: černá, šedá, béžová, olivová?",
-    "Není to Nike ani mainstreamový parfém?"
+    "Is it from a brand that mainly does one thing (running, outdoor, clothing)?",
+    "Would Vojta wear it almost every day or for running?",
+    "Is the logo small, or is there none?",
+    "Is the colour muted: black, grey, beige, olive?",
+    "It’s not Nike or a mainstream fragrance?"
   ];
-  const VERDICTS = ["Odklikejte, co platí.", "Hmm, spíš ne.", "Hmm, spíš ne.", "Možná, ještě to zvažte.", "Skoro! Asi by se mi to líbilo.", "Beru! Tohle bych nosil."];
+  const VERDICTS = ["Tick whatever applies.", "Hmm, probably not.", "Hmm, probably not.", "Maybe, think it over.", "Almost! I’d probably like it.", "Yes! I’d wear that."];
   const checks = TEST.map(() => false);
   const testEl = $("#test"), meter = $("#meter"), verdict = $("#verdict"), bulb = $("#bulb");
   const toggles = TEST.map((q, i) => {
@@ -588,7 +588,7 @@ const FX = {
   }
   updateTest(null);
 
-  /* ---------- tohle ne ---------- */
+  /* ---------- not these ---------- */
   if (FX.nopeFx) {
     const lis = $$("#nopeList li");
     lis.forEach(li => { const s = document.createElement("span"); s.className = "strike"; s.setAttribute("aria-hidden", "true"); li.appendChild(s);
@@ -598,7 +598,7 @@ const FX = {
       .to($$(".strike"), { scaleX: 1, duration: .35, ease: "power2.inOut", stagger: .08 }, "-=.2");
   }
 
-  /* ---------- srdce ---------- */
+  /* ---------- heart ---------- */
   const heart = $("#heart");
   heart.dataset.cursor = "💜";
   let beat = null, clicks = 0, clickTimer = null;
@@ -623,14 +623,14 @@ const FX = {
     })();
   }
 
-  /* ---------- želé tlačítka ---------- */
+  /* ---------- jelly buttons ---------- */
   if (FX.jelly) document.addEventListener("pointerover", e => {
     const el = e.target.closest(".btn, .go, .ctl, .toggle");
     if (!el || (e.relatedTarget && el.contains(e.relatedTarget)) || gsap.isTweening(el)) return;
     gsap.timeline().to(el, { scaleX: 1.12, scaleY: .88, duration: .12 }).to(el, { scaleX: .96, scaleY: 1.05, duration: .12 }).to(el, { scaleX: 1, scaleY: 1, duration: .6, ease: "elastic.out(1,.35)" });
   });
 
-  /* ---------- gyroskop (mobil) ---------- */
+  /* ---------- gyroscope (phones) ---------- */
   if (FX.gyro && !FINE && "DeviceOrientationEvent" in window && typeof DeviceOrientationEvent.requestPermission !== "function") {
     const fls = $$(".fl"), bubbles = $$(".bubble");
     const qf = fls.map(f => gsap.quickTo(f, "x", { duration: .8, ease: "power2" }));
