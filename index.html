@@ -23,12 +23,12 @@
 </div>
 <div class="stamp" id="stamp" aria-hidden="true">Approved! 🎉</div>
 
-<button class="chat-fab" id="chatFab" type="button" aria-expanded="false" aria-controls="chatPanel" data-cursor="💬" hidden><span aria-hidden="true">💬</span> Ask about my taste</button>
+<button class="chat-fab" id="chatFab" type="button" aria-expanded="false" aria-controls="chatPanel" data-cursor="💬" aria-label="Ask about my taste" hidden><span aria-hidden="true">💬</span><span class="fab-text"> Ask<span class="fab-long"> about my taste</span></span></button>
 <section class="chat" id="chatPanel" role="dialog" aria-label="Chat with Vojta's gift helper" data-lenis-prevent hidden>
   <header class="chat-head"><div><b>Vojta’s gift helper</b><span>Ideas, brands, sizes, your own idea</span></div><button class="chat-x" id="chatClose" type="button" aria-label="Close chat">×</button></header>
   <div class="chat-log" id="chatLog" aria-live="polite" data-lenis-prevent></div>
   <div class="chat-suggest" id="chatSuggest">
-    <button type="button">What’s a good gift under 500 CZK?</button><button type="button">Would he like a jacket from Zara?</button><button type="button">Which colours should we go for?</button><button type="button">What does he want most?</button>
+    <button type="button">What’s a good gift under 500 CZK?</button><button type="button">Would he like a jacket from Zara?</button><button type="button">Which colours should we go for?</button><button type="button">Running ideas under 1,000 CZK?</button>
   </div>
   <form class="chat-form" id="chatForm"><label for="chatInput" class="sr-only">Your message</label><textarea id="chatInput" rows="2" placeholder="Would he like…?"></textarea><button type="submit" class="chat-send" id="chatSend">Send</button></form>
   <p class="chat-foot">Answers come from Claude, based on Vojta’s list. Double-check sizes and prices.</p>
@@ -119,7 +119,7 @@
   <section class="nope" aria-labelledby="s5">
     <h2 id="s5">Please, not these</h2>
     <ul id="nopeList">
-      <li>Nike</li><li>Sauvage, 1 Million and co.</li><li>Gym gear</li><li>Toys and LEGO</li><li>Concert tickets</li><li>Phone or watch straps and cases</li><li>Arc'teryx for the city</li><li>Big logos</li>
+      <li>Second-hand / Vinted</li><li>Nike</li><li>Sauvage, 1 Million and co.</li><li>Gym gear</li><li>Toys and LEGO</li><li>Concert tickets</li><li>Phone or watch straps and cases</li><li>Arc'teryx for the city</li><li>Big logos</li>
     </ul>
   </section>
 

@@ -50,9 +50,12 @@ const FX = {
   try { calmPref = localStorage.getItem("vojta-calm"); } catch (e) {}
   const CALM = calmPref === "1" || (reduce && calmPref !== "0");
   const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const SMALL = matchMedia("(max-width: 600px)").matches;
   const HAS_GSAP = typeof window.gsap !== "undefined";
   if (CALM || !HAS_GSAP) Object.keys(FX).forEach(k => (FX[k] = false));
   if (!FINE) { FX.cursor = false; FX.cardMagnet = false; FX.tagRepel = false; }
+  const DRAG = FX.stickers && FINE;
+  if (DRAG) document.documentElement.classList.add("drag");
   if (typeof window.Lenis === "undefined") FX.lenis = false;
   const confettiFn = typeof window.confetti === "function" ? window.confetti : null;
   const ANY = Object.values(FX).some(Boolean);
@@ -91,8 +94,8 @@ const FX = {
   function cardHTML(it) {
     const url = it.link || ("https://www.google.com/search?q=" + encodeURIComponent(it.q));
     const tags = [it.type, it.size ? "size " + it.size : "", it.price >= 1000 ? "good to split" : ""].filter(Boolean).map(x => `<span class="tag">${x}</span>`).join("");
-    const note = it.fav ? (it.note ? it.note + " " : "") + "This is the one I want most!" : it.note;
-    return `<article class="card${it.fav ? " fav" : ""}" data-flip-id="c${it.id}" data-cursor="🎁">
+    const note = it.note;
+    return `<article class="card" data-flip-id="c${it.id}" data-cursor="🎁">
     <div class="brand">${it.brand}</div>
     <h3>${it.name}</h3>
     <div>${note ? `<p class="note">${note}</p>` : ""}</div>
@@ -105,7 +108,9 @@ const FX = {
   /* ---------- confetti and sparks ---------- */
   function burstAt(x, y, opts = {}) {
     if (!confettiFn) return;
-    confettiFn(Object.assign({ particleCount: 46, spread: 75, startVelocity: 30, ticks: 140, scalar: .9, colors: COLORS, origin: { x: x / innerWidth, y: y / innerHeight }, disableForReducedMotion: false }, opts));
+    const o = Object.assign({ particleCount: 46, spread: 75, startVelocity: 30, ticks: 140, scalar: .9, colors: COLORS, origin: { x: x / innerWidth, y: y / innerHeight }, disableForReducedMotion: false }, opts);
+    if (SMALL) o.particleCount = Math.round(o.particleCount * .55);
+    confettiFn(o);
   }
   function sparks(x, y, n = 8, dist = 46) {
     if (!HAS_GSAP) return;
@@ -243,7 +248,7 @@ const FX = {
     }, { passive: true });
   }
   const stickers = $$(".sticker");
-  if (FX.stickers) {
+  if (DRAG) {
     Draggable.create(stickers, {
       type: "x,y", inertia: true, edgeResistance: .7, bounds: "#wrap",
       onPress() { gsap.to(this.target, { scale: 1.12, rotation: rand(-8, 8), boxShadow: "8px 10px 0 #4B3A86", duration: .2 }); },
@@ -373,8 +378,14 @@ const FX = {
     $$(".bubble", tiersEl).forEach((b, i) => b.setAttribute("aria-pressed", state.tier === TIERS[i].id ? "true" : "false"));
     $$(".bubble", catsEl).forEach((b, i) => b.setAttribute("aria-pressed", state.cat === CATS[i].id ? "true" : "false"));
   }
-  TIERS.forEach(o => tiersEl.append(makeBubble(o, (b) => { state.tier = o.id; state.open = false; state.seed++; syncPressed(); pickFx(b, o); renderResults(); })));
-  CATS.forEach(o => catsEl.append(makeBubble(o, (b) => { state.cat = o.id; state.open = false; state.seed++; syncPressed(); pickFx(b, o); renderResults(); })));
+  function glideTo(el) {
+    if (!SMALL || !el) return;
+    const top = el.getBoundingClientRect().top;
+    if (top > 40 && top < innerHeight * .35) return; // already in view
+    setTimeout(() => { if (lenis) lenis.scrollTo(el, { offset: -20, duration: 1.1 }); else el.scrollIntoView({ behavior: CALM ? "auto" : "smooth", block: "start" }); }, CALM ? 0 : 450);
+  }
+  TIERS.forEach(o => tiersEl.append(makeBubble(o, (b) => { state.tier = o.id; state.open = false; state.seed++; syncPressed(); pickFx(b, o); renderResults(); glideTo(state.cat ? $("#s3").closest(".step") : catsEl.closest(".step")); })));
+  CATS.forEach(o => catsEl.append(makeBubble(o, (b) => { state.cat = o.id; state.open = false; state.seed++; syncPressed(); pickFx(b, o); renderResults(); glideTo(state.tier ? $("#s3").closest(".step") : tiersEl.closest(".step")); })));
 
   /* ---------- step 3: ideas ---------- */
   const stage = $("#giftStage"), waiting = $("#waiting"), body = $("#resultsBody"), giftbox = $("#giftbox");

@@ -2,8 +2,8 @@
    Category (3rd field) stays as the Czech key the filters use.
    [brand, name, category, type, price, size, note, favourite, price checked, link, search] */
 window.DATA = [
-["UVU", "Half tights", "Na běh", "Clothing", 800, "L", "Short running tights. Second-hand from Vinted is totally fine.", 1, 0, "", "UVU half tights"],
-["UVU", "Boxy running top", "Na běh", "Clothing", 800, "M", "Relaxed boxy fit. Vinted is fine.", 0, 0, "", "UVU running top"],
+["UVU", "Half tights", "Na běh", "Clothing", 800, "L", "Short running tights.", 1, 0, "", "UVU half tights"],
+["UVU", "Boxy running top", "Na běh", "Clothing", 800, "M", "Relaxed boxy fit.", 0, 0, "", "UVU running top"],
 ["Ciele", "Running tee", "Na běh", "Clothing", 1500, "M", "", 0, 0, "", "Ciele running t-shirt"],
 ["On", "Performance-T", "Na běh", "Clothing", 1300, "M", "Lightweight running tee.", 0, 0, "", "On Performance-T men"],
 ["Salomon", "Sense Aero tee", "Na běh", "Clothing", 1100, "M", "", 0, 0, "", "Salomon Sense Aero tee men"],
@@ -39,7 +39,7 @@ window.DATA = [
 ["Another Cotton Lab", "Short-sleeve shirt", "Na každý den", "Clothing", 1850, "M", "", 0, 0, "", "Another Cotton Lab short sleeve shirt"],
 ["Another Cotton Lab", "Oversized hoodie", "Na každý den", "Clothing", 2130, "M", "", 0, 1, "", "Another Cotton Lab oversized hoodie"],
 ["Another Cotton Lab", "Cap or beanie", "Na každý den", "Accessory", 800, "", "", 0, 0, "", "Another Cotton Lab cap"],
-["Another Cotton Lab · SRC", "Sunday Running Club camo hoodie", "Na běh", "Clothing", 2300, "M", "My favourite from the whole line.", 1, 0, "", "Another Cotton Lab Sunday Running Club camo hoodie"],
+["Another Cotton Lab · SRC", "Sunday Running Club camo hoodie", "Na běh", "Clothing", 2300, "M", "From the Sunday Running Club line.", 1, 0, "", "Another Cotton Lab Sunday Running Club camo hoodie"],
 ["Another Cotton Lab · SRC", "Sunday Running Club camo running jacket", "Na běh", "Clothing", 3000, "M", "Often on sale for around 2,100 CZK.", 0, 1, "https://anothercotton.com/en/products/src%C2%AE-camo-running-jacket", "Another Cotton Lab SRC Camo Running Jacket"],
 ["Another Cotton Lab · SRC", "Sunday Running Club sweatshirt, grey", "Na běh", "Clothing", 2000, "M", "", 0, 1, "", "Another Cotton Lab Sunday Running Club sweatshirt"],
 ["Another Cotton Lab · SRC", "SRC 2.0 shorts", "Na běh", "Clothing", 999, "M", "", 0, 1, "", "Another Cotton Lab SRC 2.0 shorts"],
