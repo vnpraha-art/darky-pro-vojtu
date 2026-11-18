@@ -53,12 +53,12 @@ body{background:var(--cream);color:var(--plum);font-family:var(--font-body);font
 @media (max-width:560px){.fl{width:44px;height:44px;opacity:.6}}
 
 /* cursor */
-.cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none;display:none}
+.cursor{position:fixed;left:0;top:0;z-index:1000;pointer-events:none;display:none}
 .has-cursor .cursor{display:block}
 .has-cursor,.has-cursor *{cursor:none!important}
 .cursor-blob{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--coral);border:2.5px solid var(--plum);display:grid;place-items:center}
 .cursor-emoji{font-size:9px;opacity:0;line-height:1}
-.trail{position:fixed;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--lilac);pointer-events:none;z-index:89}
+.trail{position:fixed;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--lilac);pointer-events:none;z-index:999}
 
 /* controls */
 .controls{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;gap:8px}
