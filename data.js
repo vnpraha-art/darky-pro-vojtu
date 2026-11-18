@@ -60,5 +60,15 @@ window.DATA = [
 ["Lululemon", "License to Train shorts", "Na posilovnu", "Clothing", 1700, "", "Size M or L, check with him.", 0, 0, "", "lululemon License to Train Short men"],
 ["Lululemon", "Pace Breaker shorts", "Na posilovnu", "Clothing", 1950, "", "Size M or L, check with him.", 0, 0, "", "lululemon Pace Breaker Short men"],
 ["Lululemon", "Everywhere Belt Bag", "Na posilovnu", "Accessory", 950, "", "Small bag for keys, phone and earbuds.", 0, 0, "", "lululemon Everywhere Belt Bag"],
-["Lululemon", "Training socks, 3-pack", "Na posilovnu", "Socks", 700, "", "", 0, 0, "", "lululemon men training socks 3 pack"]
+["Lululemon", "Training socks, 3-pack", "Na posilovnu", "Socks", 700, "", "", 0, 0, "", "lululemon men training socks 3 pack"],
+["Arc'teryx", "Small Bird Cap", "Na hory a výlety", "Accessory", 1250, "", "Breathable trail cap for hikes and runs.", 0, 1, "", "Arc'teryx Small Bird Cap"],
+["Smartwool", "Hike Classic Light Cushion Crew socks", "Na hory a výlety", "Socks", 480, "", "Merino hiking socks.", 0, 1, "", "Smartwool Hike Classic Edition Light Cushion Crew socks"],
+["Buff", "Merino Lightweight neck warmer", "Na hory a výlety", "Accessory", 680, "", "Thin merino, for hikes and the slopes.", 0, 1, "", "Buff Merino Lightweight neckwear"],
+["Patagonia", "Better Sweater fleece jacket", "Na hory a výlety", "Clothing", 3750, "M", "For a joint gift.", 0, 1, "", "Patagonia Men's Better Sweater Fleece Jacket"],
+["Kintsugi / Oraculum", "Single sample, 2 ml (Tempo or Krucifist)", "Vůně", "Fragrance", 250, "", "A small taste of a Czech perfume house.", 0, 0, "", "Kintsugi Tempo sample 2 ml"],
+["On", "Performance Run socks", "Na posilovnu", "Socks", 450, "", "", 0, 0, "", "On Performance Run Sock"],
+["Lululemon", "Training socks, single pair", "Na posilovnu", "Socks", 450, "", "", 0, 0, "", "lululemon men training socks"],
+["Stance", "Run light crew socks", "Na běh", "Socks", 400, "", "", 0, 0, "", "Stance Run Light Crew socks"],
+["Carhartt WIP", "Hooded Chase sweatshirt", "Na každý den", "Clothing", 1790, "M", "", 0, 1, "", "Carhartt WIP Hooded Chase Sweat"],
+["COS", "Merino wool jumper", "Na každý den", "Clothing", 2700, "M", "For a joint gift.", 0, 0, "", "COS men merino wool jumper"]
 ];
