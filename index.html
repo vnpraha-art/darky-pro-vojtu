@@ -23,6 +23,17 @@
 </div>
 <div class="stamp" id="stamp" aria-hidden="true">Approved! 🎉</div>
 
+<button class="chat-fab" id="chatFab" type="button" aria-expanded="false" aria-controls="chatPanel" data-cursor="💬" hidden><span aria-hidden="true">💬</span> Ask about my taste</button>
+<section class="chat" id="chatPanel" role="dialog" aria-label="Chat with Vojta's gift helper" data-lenis-prevent hidden>
+  <header class="chat-head"><div><b>Vojta’s gift helper</b><span>Ideas, brands, sizes, your own idea</span></div><button class="chat-x" id="chatClose" type="button" aria-label="Close chat">×</button></header>
+  <div class="chat-log" id="chatLog" aria-live="polite" data-lenis-prevent></div>
+  <div class="chat-suggest" id="chatSuggest">
+    <button type="button">What’s a good gift under 500 CZK?</button><button type="button">Would he like a jacket from Zara?</button><button type="button">Which colours should we go for?</button><button type="button">What does he want most?</button>
+  </div>
+  <form class="chat-form" id="chatForm"><label for="chatInput" class="sr-only">Your message</label><textarea id="chatInput" rows="2" placeholder="Would he like…?"></textarea><button type="submit" class="chat-send" id="chatSend">Send</button></form>
+  <p class="chat-foot">Answers come from Claude, based on Vojta’s list. Double-check sizes and prices.</p>
+</section>
+
 <div class="floaters" id="floaters" aria-hidden="true">
   <div class="fl" style="left:3%;top:520px" data-speed="0.35"><svg viewBox="0 0 100 100"><path class="f-butter s4" d="M50 6 L61 37 L94 38 L68 58 L77 90 L50 71 L23 90 L32 58 L6 38 L39 37 Z"/></svg></div>
   <div class="fl" style="right:4%;top:760px" data-speed="0.6"><svg viewBox="0 0 100 100"><rect class="f-coral s4" x="16" y="46" width="68" height="44" rx="6"/><rect class="f-coral s4" x="10" y="32" width="80" height="16" rx="5"/><rect class="f-butter s4" x="44" y="32" width="12" height="58"/><path class="f-butter s4" d="M50 32 C38 10 22 16 28 26 C32 32 42 32 50 32 Z M50 32 C62 10 78 16 72 26 C68 32 58 32 50 32 Z"/></svg></div>
@@ -100,6 +111,7 @@
         <div class="test" id="test"></div>
         <div class="meter" aria-hidden="true"><span class="bulb" id="bulb"></span><span class="tube"><i id="meter"></i></span></div>
         <p class="verdict" id="verdict" aria-live="polite">Tick whatever applies.</p>
+        <button class="btn ask-inline" id="askInline" type="button" data-cursor="💬" hidden>Not sure? Ask the gift helper 💬</button>
       </div>
     </div>
   </section>
@@ -126,5 +138,6 @@
 <script src="vendor/confetti.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script src="chat.js"></script>
 </body>
 </html>
