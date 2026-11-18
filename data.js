@@ -48,5 +48,17 @@ window.DATA = [
 ["Kintsugi", "Sample set", "Vůně", "Fragrance", 700, "", "To try more of their scents.", 0, 0, "", "Kintsugi Perfumes discovery set"],
 ["Oraculum", "Samples, incl. Krucifist", "Vůně", "Fragrance", 600, "", "Czech perfume house.", 0, 0, "", "Oraculum Krucifist sample"],
 ["Kintsugi", "Tempo, full bottle 50 ml", "Vůně", "Fragrance", 3600, "", "For a joint gift.", 0, 0, "", "Kintsugi Perfumes Tempo 50 ml"],
-["Oraculum", "Krucifist, 50 ml", "Vůně", "Fragrance", 4000, "", "For a joint gift. Around €163.", 0, 1, "", "Oraculum Krucifist 50 ml"]
+["Oraculum", "Krucifist, 50 ml", "Vůně", "Fragrance", 4000, "", "For a joint gift. Around €163.", 0, 1, "", "Oraculum Krucifist 50 ml"],
+["On", "Focus Shorts", "Na posilovnu", "Clothing", 2000, "", "Training shorts. Often on sale for around 1,400 CZK. Size M or L, check with him.", 0, 0, "", "On Focus Shorts men"],
+["On", "Focus-T", "Na posilovnu", "Clothing", 1750, "M", "Light training tee.", 0, 0, "", "On Focus-T men"],
+["On", "Club Collective-T", "Na posilovnu", "Clothing", 1500, "M", "Soft tee for the gym and after.", 0, 0, "", "On Club Collective-T men"],
+["On", "Club Shorts", "Na posilovnu", "Clothing", 1750, "", "For to and from the gym. Size M or L, check with him.", 0, 0, "", "On Club Shorts men"],
+["On", "Train Shorts", "Na posilovnu", "Clothing", 2250, "", "For a joint gift. Size M or L, check with him.", 0, 0, "", "On Train Shorts men"],
+["On", "Focus Tech Hoodie", "Na posilovnu", "Clothing", 3750, "M", "For a joint gift.", 0, 0, "", "On Focus Tech Hoodie men"],
+["Lululemon", "License to Train T-shirt", "Na posilovnu", "Clothing", 1900, "M", "", 0, 0, "", "lululemon License to Train Short-Sleeve Shirt men"],
+["Lululemon", "Metal Vent Tech T-shirt", "Na posilovnu", "Clothing", 1900, "M", "", 0, 0, "", "lululemon Metal Vent Tech Short-Sleeve Shirt men"],
+["Lululemon", "License to Train shorts", "Na posilovnu", "Clothing", 1700, "", "Size M or L, check with him.", 0, 0, "", "lululemon License to Train Short men"],
+["Lululemon", "Pace Breaker shorts", "Na posilovnu", "Clothing", 1950, "", "Size M or L, check with him.", 0, 0, "", "lululemon Pace Breaker Short men"],
+["Lululemon", "Everywhere Belt Bag", "Na posilovnu", "Accessory", 950, "", "Small bag for keys, phone and earbuds.", 0, 0, "", "lululemon Everywhere Belt Bag"],
+["Lululemon", "Training socks, 3-pack", "Na posilovnu", "Socks", 700, "", "", 0, 0, "", "lululemon men training socks 3 pack"]
 ];

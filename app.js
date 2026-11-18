@@ -82,6 +82,7 @@ const FX = {
     { id: "Na každý den", big: "For every day", small: "Tees, beanies, little things", emoji: "👕" },
     { id: "Na hory a výlety", big: "For the mountains", small: "Hikes and snowboarding", emoji: "🏔️" },
     { id: "Vůně", big: "Fragrance", small: "Czech perfume houses", emoji: "🧴" },
+    { id: "Na posilovnu", big: "For the gym", small: "On, Lululemon and the like", emoji: "🏋️" },
     { id: "all", big: "Surprise me", small: "A bit of everything", emoji: "🎲" }
   ];
   const state = { tier: null, cat: null, open: false, seed: 0 };
@@ -542,7 +543,7 @@ const FX = {
   /* ---------- own-idea test ---------- */
   const TEST = [
     "Is it from a brand that mainly does one thing (running, outdoor, clothing)?",
-    "Would Vojta wear it almost every day or for running?",
+    "Would Vojta wear it almost every day, for running or at the gym?",
     "Is the logo small, or is there none?",
     "Is the colour muted: black, grey, beige, olive?",
     "It’s not Nike or a mainstream fragrance?"
