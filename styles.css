@@ -309,7 +309,8 @@ footer p{font-family:var(--font-hand);font-size:30px;color:var(--plum);font-weig
   .ctl{padding:5px 10px;font-size:12px;box-shadow:2px 2px 0 var(--plum)}
   /* hero: title across the top, letter and sizes side by side */
   .hero{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:24px;row-gap:12px;align-items:start}
-  .hero > .hello,.hero > h1{grid-column:1 / -1}
+  .hero > .hello,.hero > h1,.hero > .mood-open{grid-column:1 / -1}
+  .hero > .mood-open{margin-top:4px}
   .hello{font-size:24px}
   h1{font-size:clamp(40px,min(9vw,16vh),76px);-webkit-text-stroke-width:2px;text-shadow:4px 5px 0 var(--plum)}
   .hero-blob{width:min(260px,55vh);height:min(260px,55vh);top:-50px}
