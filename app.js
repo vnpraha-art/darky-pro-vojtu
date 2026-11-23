@@ -49,7 +49,9 @@ const FX = {
   try { calmPref = localStorage.getItem("vojta-calm"); } catch (e) {}
   const CALM = calmPref === "1" || (reduce && calmPref !== "0");
   const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const SMALL = matchMedia("(max-width: 600px)").matches;
+  // phones in either orientation: narrow portrait, or short landscape. Live, so it follows rotation.
+  const SMALL_MQ = matchMedia("(max-width: 600px), (max-height: 500px) and (orientation: landscape)");
+  const isSmall = () => SMALL_MQ.matches;
   const HAS_GSAP = typeof window.gsap !== "undefined";
   if (CALM || !HAS_GSAP) Object.keys(FX).forEach(k => (FX[k] = false));
   if (!FINE) { FX.cursor = false; FX.cardMagnet = false; FX.tagRepel = false; }
@@ -109,7 +111,7 @@ const FX = {
   function burstAt(x, y, opts = {}) {
     if (!confettiFn) return;
     const o = Object.assign({ particleCount: 46, spread: 75, startVelocity: 30, ticks: 140, scalar: .9, colors: COLORS, origin: { x: x / innerWidth, y: y / innerHeight }, disableForReducedMotion: false }, opts);
-    if (SMALL) o.particleCount = Math.round(o.particleCount * .55);
+    if (isSmall()) o.particleCount = Math.round(o.particleCount * .55);
     confettiFn(o);
   }
   function sparks(x, y, n = 8, dist = 46) {
@@ -379,7 +381,7 @@ const FX = {
     $$(".bubble", catsEl).forEach((b, i) => b.setAttribute("aria-pressed", state.cat === CATS[i].id ? "true" : "false"));
   }
   function glideTo(el) {
-    if (!SMALL || !el) return;
+    if (!isSmall() || !el) return;
     const top = el.getBoundingClientRect().top;
     if (top > 40 && top < innerHeight * .35) return; // already in view
     setTimeout(() => { if (lenis) lenis.scrollTo(el, { offset: -20, duration: 1.1 }); else el.scrollIntoView({ behavior: CALM ? "auto" : "smooth", block: "start" }); }, CALM ? 0 : 450);
@@ -637,8 +639,15 @@ const FX = {
     const qf = fls.map(f => gsap.quickTo(f, "x", { duration: .8, ease: "power2" }));
     const qb = bubbles.map(b => ({ x: gsap.quickTo(b, "rotationY", { duration: .6 }), y: gsap.quickTo(b, "rotationX", { duration: .6 }) }));
     const hb = gsap.quickTo(heroBlob, "x", { duration: 1.2 });
+    // gamma/beta are relative to the device, not the screen: swap them when the phone is held sideways
+    const screenAngle = () => (screen.orientation && typeof screen.orientation.angle === "number") ? screen.orientation.angle : (window.orientation || 0);
     addEventListener("deviceorientation", e => {
-      const g = gsap.utils.clamp(-30, 30, e.gamma || 0), bt = gsap.utils.clamp(-30, 30, (e.beta || 45) - 45);
+      const a = ((screenAngle() % 360) + 360) % 360, beta = e.beta || 0, gamma = e.gamma || 0;
+      let lr = gamma, fb = beta - 45;
+      if (a === 90) { lr = beta; fb = -gamma - 45; }
+      else if (a === 270) { lr = -beta; fb = gamma - 45; }
+      else if (a === 180) { lr = -gamma; fb = -beta - 45; }
+      const g = gsap.utils.clamp(-30, 30, lr), bt = gsap.utils.clamp(-30, 30, fb);
       qf.forEach((q, i) => q(g * (1 + i % 3)));
       qb.forEach(q => { q.x(g / 3); q.y(-bt / 4); });
       hb(g * 3);
@@ -650,5 +659,12 @@ const FX = {
   if (HAS_GSAP) reveals();
   const go = () => { if (ANY && HAS_GSAP) heroIn(); };
   if (FX.intro) intro(go); else go();
-  if (HAS_GSAP) addEventListener("load", () => ScrollTrigger.refresh());
+  if (HAS_GSAP) {
+    addEventListener("load", () => ScrollTrigger.refresh());
+    // after rotating, positions and scroll lengths change: re-measure once the new layout has settled
+    let rotT;
+    const onRotate = () => { clearTimeout(rotT); rotT = setTimeout(() => { ScrollTrigger.refresh(); if (lenis && lenis.resize) lenis.resize(); }, 350); };
+    if (screen.orientation && screen.orientation.addEventListener) screen.orientation.addEventListener("change", onRotate);
+    else addEventListener("orientationchange", onRotate);
+  }
 })();
