@@ -33,7 +33,6 @@ const FX = {
   meterFx:      true,  // thermometer fills with a spring
   approved:     true,  // 5/5: confetti cannon, stamp, shake
   sound:        true,  // sound on approval (off until switched on)
-  nopeFx:       true,  // "not these": strikethrough, shake on hover
   heart:        true,  // beating heart in the footer
   easterEgg:    true,  // 5 clicks on the heart = raining gifts
   jelly:        true,  // jelly effect on buttons
@@ -314,7 +313,7 @@ const FX = {
 
   /* ---------- section reveals ---------- */
   function reveals() {
-    $$(".step, .nope").forEach(sec => {
+    $$(".step").forEach(sec => {
       const head = $(".step-head, h2", sec);
       if (FX.sectionReveal) {
         gsap.fromTo(head, { clipPath: "inset(-20% 100% -20% 0%)" }, { clipPath: "inset(-20% -10% -20% 0%)", duration: 1, ease: "power3.out", scrollTrigger: { trigger: sec, start: "top 82%" } });
@@ -599,16 +598,6 @@ const FX = {
       .to(st, { opacity: 0, scale: 1.2, duration: .4, delay: 1.5 });
   }
   updateTest(null);
-
-  /* ---------- not these ---------- */
-  if (FX.nopeFx) {
-    const lis = $$("#nopeList li");
-    lis.forEach(li => { const s = document.createElement("span"); s.className = "strike"; s.setAttribute("aria-hidden", "true"); li.appendChild(s);
-      li.addEventListener("pointerenter", () => gsap.fromTo(li, { x: -6 }, { x: 0, duration: .5, ease: "elastic.out(2,.2)", overwrite: true })); });
-    gsap.timeline({ scrollTrigger: { trigger: "#nopeList", start: "top 85%" } })
-      .from(lis, { scale: .5, opacity: 0, rotation: () => rand(-14, 14), duration: .5, ease: "back.out(2.5)", stagger: .07 })
-      .to($$(".strike"), { scaleX: 1, duration: .35, ease: "power2.inOut", stagger: .08 }, "-=.2");
-  }
 
   /* ---------- heart ---------- */
   const heart = $("#heart");
