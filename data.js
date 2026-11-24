@@ -62,12 +62,10 @@ window.DATA = [
 ["Lululemon", "Everywhere Belt Bag", "Na posilovnu", "Accessory", 950, "", "Small bag for keys, phone and earbuds.", 0, 0, "", "lululemon Everywhere Belt Bag"],
 ["Lululemon", "Training socks, 3-pack", "Na posilovnu", "Socks", 700, "", "", 0, 0, "", "lululemon men training socks 3 pack"],
 ["Arc'teryx", "Small Bird Cap", "Na hory a výlety", "Accessory", 1250, "", "Breathable trail cap for hikes and runs.", 0, 1, "", "Arc'teryx Small Bird Cap"],
-["Smartwool", "Hike Classic Light Cushion Crew socks", "Na hory a výlety", "Socks", 480, "", "Merino hiking socks.", 0, 1, "", "Smartwool Hike Classic Edition Light Cushion Crew socks"],
 ["Buff", "Merino Lightweight neck warmer", "Na hory a výlety", "Accessory", 680, "", "Thin merino, for hikes and the slopes.", 0, 1, "", "Buff Merino Lightweight neckwear"],
 ["Patagonia", "Better Sweater fleece jacket", "Na hory a výlety", "Clothing", 3750, "M", "For a joint gift.", 0, 1, "", "Patagonia Men's Better Sweater Fleece Jacket"],
 ["Patagonia", "Torrentshell 3L rain jacket", "Na hory a výlety", "Clothing", 5000, "M", "Waterproof shell for hikes. For a joint gift.", 0, 1, "", "Patagonia Men's Torrentshell 3L Rain Jacket"],
 ["On", "Performance Run Sock Low", "Na běh", "Socks", 490, "", "", 0, 1, "", "On Performance Run Sock Low"],
-["Stance", "Run light crew socks", "Na běh", "Socks", 400, "", "", 0, 0, "", "Stance Run Light Crew socks"],
 ["On", "Soft Flask 500 ml", "Na běh", "Accessory", 620, "", "Soft bottle for longer runs.", 0, 1, "", "On Soft Flask 500ml"],
 ["On", "Speed Belt", "Na běh", "Accessory", 1000, "", "Running belt for phone and keys.", 0, 1, "", "On Speed Belt"],
 ["Oakley", "Sutro Lite sunglasses", "Na běh", "Accessory", 4700, "", "For a joint gift.", 0, 1, "", "Oakley Sutro Lite"],
@@ -80,5 +78,7 @@ window.DATA = [
 ["Oakley", "Holbrook sunglasses", "Na každý den", "Accessory", 4500, "", "For a joint gift.", 0, 0, "", "Oakley Holbrook"],
 ["Salomon", "Bonatti Cross Wind windbreaker", "Na běh", "Clothing", 2250, "M", "Light windproof running jacket. Plain black or a muted colour. Often on sale for around 1,500 CZK.", 1, 1, "", "Salomon Bonatti Cross Wind jacket men"],
 ["On", "Weather Jacket (windbreaker)", "Na běh", "Clothing", 6000, "M", "Ultralight windproof running jacket. Plain black or a muted colour. For a joint gift. Full price around €240; last-season colours are often around €140 (~3,500 CZK), so look for the sale.", 1, 1, "", "On Weather Jacket men"],
-["Kiprun", "Wind 500 windbreaker", "Na běh", "Clothing", 800, "M", "Simple windproof running jacket. Plain black or a muted colour.", 0, 1, "", "Kiprun Wind 500 men windproof running jacket"]
+["Kiprun", "Wind 500 windbreaker", "Na běh", "Clothing", 800, "M", "Simple windproof running jacket. Plain black or a muted colour.", 0, 1, "", "Kiprun Wind 500 men windproof running jacket"],
+["Peak Performance", "Beanie", "Na hory a výlety", "Accessory", 1040, "", "Swedish brand I've started to like. Muted colour, small logo.", 1, 1, "", "Peak Performance beanie men"],
+["Peak Performance", "Tech Player cap", "Na běh", "Accessory", 1200, "", "Light technical cap for runs and hikes. Swedish brand I've started to like.", 0, 0, "", "Peak Performance Tech Player cap"]
 ];
