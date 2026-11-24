@@ -305,7 +305,7 @@ const FX = {
 
   /* ---------- brand strip ---------- */
   const mq = $("#marquee");
-  const BRANDS = ["Ciele", "Another Cotton Lab", "UVU", "Carhartt WIP", "On", "Salomon", "Patagonia", "Nude Project", "Arket", "COS", "Arc'teryx", "Peak Performance", "Kintsugi", "Oraculum", "Falke"];
+  const BRANDS = ["Ciele", "Another Cotton Lab", "UVU", "Carhartt WIP", "On", "Salomon", "Patagonia", "Nude Project", "Arket", "COS", "Arc'teryx", "Peak Performance", "Kintsugi", "Oraculum"];
   mq.innerHTML = [...BRANDS, ...BRANDS].map(b => `<span>${b}</span>`).join("");
   if (FX.marquee) {
     const loop = gsap.to(mq, { xPercent: -50, ease: "none", duration: 32, repeat: -1 });

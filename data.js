@@ -14,8 +14,6 @@ window.DATA = [
 ["Salomon", "Running headband or beanie", "Na běh", "Accessory", 500, "", "For winter running.", 0, 0, "", "Salomon running headband beanie"],
 ["Salomon", "Cross Warm gloves", "Na běh", "Accessory", 900, "", "", 0, 0, "", "Salomon Cross Warm gloves"],
 ["On", "Performance Run Sock Mid", "Na běh", "Socks", 540, "", "", 1, 1, "", "On Performance Run Sock Mid"],
-["Falke", "RU4 running socks", "Na běh", "Socks", 500, "", "", 0, 0, "", "Falke RU4 running socks"],
-["Falke", "Airport or Tiago socks", "Na každý den", "Socks", 400, "", "For every day.", 0, 0, "", "Falke Airport socks men"],
 ["Carhartt WIP", "Socks, 2-pack", "Na každý den", "Socks", 400, "", "", 0, 0, "", "Carhartt WIP socks 2 pack"],
 ["Arket", "Socks multipack", "Na každý den", "Socks", 350, "", "", 0, 0, "", "Arket socks pack men"],
 ["Carhartt WIP", "Watch Hat beanie", "Na každý den", "Accessory", 700, "", "Muted colour.", 0, 0, "", "Carhartt WIP Acrylic Watch Hat"],
