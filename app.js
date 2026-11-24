@@ -264,11 +264,11 @@ const FX = {
     if (FX.titleLetters) tl.from(chars, { y: 90, scaleY: 1.7, scaleX: .5, opacity: 0, rotation: () => rand(-25, 25), duration: 1.1, ease: "elastic.out(1,.45)", stagger: .045 }, 0);
     tl.from(".hello", { y: 20, opacity: 0, rotation: -12, duration: .6, ease: "back.out(2)" }, .1);
     if (FX.heroBlob) tl.from(heroBlob, { scale: 0, duration: 1.4, ease: "elastic.out(1,.5)" }, 0);
-    if (FX.letterUnfold) {
+    if (FX.letterUnfold && $("#letter")) {
       tl.from("#letter", { rotationX: -100, scaleY: .2, transformOrigin: "50% 0%", transformPerspective: 900, opacity: 0, duration: 1, ease: "back.out(1.2)" }, .45)
         .from("#letter p", { opacity: 0, duration: .5 }, 1.1);
     }
-    if (FX.signature) {
+    if (FX.signature && $("#sigText")) {
       const t = $("#sigText"); const len = 420;
       gsap.set(t, { strokeDasharray: len, strokeDashoffset: len, fillOpacity: 0 });
       tl.to(t, { strokeDashoffset: 0, duration: 1.4, ease: "power1.inOut" }, 1.4).to(t, { fillOpacity: 1, duration: .4 }, 2.5);
