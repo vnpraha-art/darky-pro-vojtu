@@ -168,6 +168,7 @@ const FX = {
   let lenis = null;
   if (FX.lenis) {
     lenis = new Lenis({ lerp: .1, smoothWheel: true });
+    window.lenis = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
@@ -499,6 +500,28 @@ const FX = {
       stage.style.display = "none";
       placeCards(shown, first ? "deal" : "flip"); finish();
     }
+  }
+
+  /* ---------- the whole list ---------- */
+  const allList = $("#allList"), allGroups = $("#allGroups"), allSummary = allList ? $("summary", allList) : null;
+  if (allList && allGroups) {
+    const total = ITEMS.length;
+    const openLabel = `Show all ${total} ideas`, closeLabel = "Hide the whole list";
+    allSummary.textContent = openLabel;
+    allGroups.innerHTML = CATS.filter(c => c.id !== "all").map(c => {
+      const list = ITEMS.filter(i => i.cat === c.id).sort((a, b) => a.price - b.price);
+      if (!list.length) return "";
+      return `<div class="all-group"><h3><span aria-hidden="true">${c.emoji}</span> ${c.big} <span class="all-count">${list.length}</span></h3><ul>${list.map(it => {
+        const url = it.link || ("https://www.google.com/search?q=" + encodeURIComponent(it.q));
+        return `<li><div><span class="all-brand">${it.brand}</span><span class="all-name">${it.name}${it.size ? ` <small>size ${it.size}</small>` : ""}</span></div><span class="all-price">~${fmt(it.price)} CZK</span><a class="all-go" href="${url}" target="_blank" rel="noopener" data-cursor="🛍️" aria-label="Find ${it.brand} ${it.name}">↗</a></li>`;
+      }).join("")}</ul></div>`;
+    }).join("");
+    allList.addEventListener("toggle", () => {
+      allSummary.textContent = allList.open ? closeLabel : openLabel;
+      if (allList.open && FX.flip) gsap.fromTo($$(".all-group", allGroups), { y: 40, opacity: 0, rotation: () => rand(-3, 3) }, { y: 0, opacity: 1, rotation: 0, duration: .6, ease: "back.out(1.6)", stagger: .06, overwrite: true, clearProps: "transform,opacity" });
+      if (HAS_GSAP) ScrollTrigger.refresh();
+      if (lenis && lenis.resize) lenis.resize();
+    });
   }
 
   /* ---------- step 4: taste ---------- */
