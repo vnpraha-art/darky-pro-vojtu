@@ -78,5 +78,8 @@ window.DATA = [
 ["On", "Weather Jacket (windbreaker)", "Na běh", "Clothing", 6000, "M", "Ultralight windproof running jacket. Plain black or a muted colour. For a joint gift. Full price around €240; last-season colours are often around €140 (~3,500 CZK), so look for the sale.", 1, 1, "", "On Weather Jacket men"],
 ["Kiprun", "Wind 500 windbreaker", "Na běh", "Clothing", 800, "M", "Simple windproof running jacket. Plain black or a muted colour.", 0, 1, "", "Kiprun Wind 500 men windproof running jacket"],
 ["Peak Performance", "Beanie", "Na hory a výlety", "Accessory", 1040, "", "Swedish brand I've started to like. Muted colour, small logo.", 1, 1, "", "Peak Performance beanie men"],
-["Peak Performance", "Tech Player cap", "Na běh", "Accessory", 1200, "", "Light technical cap for runs and hikes. Swedish brand I've started to like.", 0, 0, "", "Peak Performance Tech Player cap"]
+["Peak Performance", "Tech Player cap", "Na běh", "Accessory", 1200, "", "Light technical cap for runs and hikes. Swedish brand I've started to like.", 0, 0, "", "Peak Performance Tech Player cap"],
+["Fjällräven", "Övik Rib beanie", "Na každý den", "Accessory", 900, "", "Muted colour: grey, black or dark navy.", 0, 0, "", "Fjällräven Övik Rib Beanie"],
+["Fjällräven", "Vardag 6L shoulder bag", "Na každý den", "Accessory", 1300, "", "Small everyday bag. Coal black.", 0, 0, "", "Fjällräven Vardag 6L shoulder bag"],
+["Fjällräven", "Övik knit sweater", "Na každý den", "Clothing", 4200, "M", "Wool jumper in grey or a muted colour. For a joint gift.", 0, 0, "", "Fjällräven Övik Round-Neck Sweater men"]
 ];
